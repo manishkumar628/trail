@@ -8,7 +8,7 @@ resource "aws_instance" "web" {
   key_name      = "Mumbai_New_Key"           # Replace with your key pair name
   vpc_security_group_ids = ["sg-005f6e32c5fede8c5"]   # your security group id to be replaced.
   tags = {
-    Name = "Prod_Server"
-    Env = "Prod"
+    Name = "uat_Server"
+    Env = "uat"
   }
 }
