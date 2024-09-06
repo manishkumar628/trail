@@ -1,0 +1,54 @@
+1.First to setup IAM police roles     (  "To create a role in iam eks"  )
+  
+ 1. eks  and EKS-CLUSTER and create role ( "by default role is added" )
+
+ 2. EC2  role are added in 3 policies
+  
+   1.amazoneks-workernodepolicy
+   2. amazon eks_cnl_policy
+   3. amazonec2containerregistryread-only
+
+2. create eks cluster in aws
+
+  1. create and to set your cluster name & role is added and vpc use for bydefault are as your wish and create
+  
+  if your cluster is ready and go to compute and add nodes section and create nodes how you have
+
+3. come to ec2 console your your node is ready & to install below steps you follow
+
+
+
+1. first you install awscli setup 
+
+    2  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    3  unzip awscliv2.zip
+
+2.Install and Set Up kubectl on Linux      (  kubectl installation  )
+
+  1.  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  2.  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+  3.  echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+  4.  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+  5.  kubectl version --client
+ 
+3. TO setup accesskey &secretkey
+
+   1.  aws configure
+
+4. To see the cluster in nodes server
+
+   1  aws eks list-clusters
+
+5. create .kubeconfig file for kubernetes                      ( this file compulsary use if you dont use the file kubernetes not working )
+
+   1  aws eks update-kubeconfig --name mm --region us-east-1   ( name means your cluster name & region where you are using )
+
+6. To check the Nodes & pods
+
+   1 kubectl get nodes
+   2  kubectl get pods
+
+7. To check the namespce
+
+   1  kubectl get pods -n kube-system
+   2   kubectl get ns
